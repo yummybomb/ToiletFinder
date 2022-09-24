@@ -1,8 +1,20 @@
-window.onscroll = function() {myFunction()};
+const progressbar = document.querySelector('progress')
+const article = document.querySelector('article')
 
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
+let isScrolling = false
+
+document.addEventListener('scroll', (e) => isScrolling = true)
+
+render()
+
+function render() {
+	
+	requestAnimationFrame(render)
+	
+	if (!isScrolling) return
+	
+	progressbar.value = window.scrollY / (article.offsetHeight - window.innerHeight) * 100
+	
+	isScrolling = false
+	
 }
