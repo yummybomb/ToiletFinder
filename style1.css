@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Kanit', sans-serif;
+}
+.header{
+    min-height: 100vh;
+    width: 100%;
+    background: #fff;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav img{
+    width: 150px;
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}   
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+.nav-links ul li a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 12;
+}
+.nav-links ul li::after{
+    content: '';
+    width: 92%;
+    height: 2px;
+    background: #3e3e5a;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+    width: 100%;
+    background: #9292a0;
+}
+.text-box{
+    width: 90%;
+    color: #1d2026;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.text-box h1{
+    font-size: 65px;
+}
+.text-box h2{
+    font-size: 55px;
+    margin-top: -20px;
+    padding: 0;
+}
+.text-box p{
+    margin: margin 10px 0 40px;
+    font-size: 14px;
+    color: #1d2026;
+}
+.hero-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #1d2026;
+    border: 1px solid #1d2026;
+    padding: 10px 30px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: 1s;
+}
+.hero-btn:hover{
+    border: 1px solid #8a653f;
+    background: #8a653f;
+}
+
+@media(max-width: 700px){
+    .text-box h1{
+        font-size: 20px;
+    }
+    .text-box h2{
+        font-size: 18px;
+        margin-top: -1px;
+    }
+}
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #f1f1f1;
+  }
+
+.information{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+p{
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+}
+  
+/* The progress container (grey background) */
+.progress-container {
+    width: 54.5%;
+    height: 25px;
+    background: #ccc;
+    transform: translate(calc(-50% + 3px), calc(50vh - 50%)) rotate(90deg);
+}
+  
+/* The progress bar (scroll indicator) */
+.progress-bar {
+    height: 8px;
+    background: #04AA6D;
+    width: 0%;
+    
+}
+
+.icon{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 50 px;
+    transform: rotate(-90deg)
+}
