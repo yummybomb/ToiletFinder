@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html>  
+<html>
 <head>
-    <meta name = "viewport" content = "with=device-width, initial-scale=1.0">
-    <title>Sh*tHub</title>
-    <link rel="stylesheet" href="style1.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
-</head> 
+    <link rel="stylesheet" href="mapstyle.css">
+    </head>
 <body>
-    <section class = "header">
-        <div class="progress-container">
-            <div class="progress-bar" id="myBar"></div>
-        </div>
-        <nav>
-            <a href="index.html"></a>
-            <div class="nav-links">
-                <ul>
-                    <li><a href = "">HOME</a></li>
-                    <li><a href = "">APP</a></li>
-                </ul>
-            </div>
-        </nav>
-    </body>
+<div id="googleMap" style="width:100%;height: 97vh;"></div>
+
+<script>
+function myMap() {
+var mapProp= {
+  center:new google.maps.LatLng(51.508742,-0.120850),
+  zoom:5,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAohgBu0p7jKQgGt4OVuwJ7SnBCszpli8&callback=myMap"></script>
+
+</body>
 </html>
