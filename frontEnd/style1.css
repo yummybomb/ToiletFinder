@@ -105,24 +105,23 @@ nav img{
     background-color: #f1f1f1;
   }
 
-.information{
+.info{
     width: 80%;
     margin: auto;
     text-align: center;
     padding-top: 100px;
 }
-h1{
+.info h1{
     font-size: 36px;
     font-weight: 600;
 }
-p{
+.info p{
     color: #777;
     font-size: 14px;
     font-weight: 300;
     line-height: 22px;
     padding: 10px;
 }
-  
 /* The progress container (grey background) */
 .progress-container {
     width: 54.5%;
