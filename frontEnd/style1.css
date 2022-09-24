@@ -86,14 +86,15 @@ nav{
 }
 
 .course{
-    width: 80%;
+    width: 100%;
     margin: auto;
     text-align: center;
     padding-top: 100px;
     color:rgb(0, 0, 0);
+    background: rgb(228, 228, 228)
 }
 h1{
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 600;
 }
 p{
@@ -103,8 +104,13 @@ p{
     line-height: 22px;
     padding: 10px;
 }
+h2{
+    font-size: 30px;
+    font-weight: 600;
+    padding: 20px;
+}
 
-progress {
+progress{
 	-webkit-appearance: none;
 	appearance: none;
 	position: fixed;
