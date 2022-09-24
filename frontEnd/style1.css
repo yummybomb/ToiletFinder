@@ -17,9 +17,6 @@ nav{
     justify-content: space-between;
     align-items: center;
 }
-nav img{
-    width: 150px;
-}
 .nav-links{
     flex: 1;
     text-align: right;
@@ -88,40 +85,6 @@ nav img{
     background: #8a653f;
 }
 
-@media(max-width: 700px){
-    .text-box h1{
-        font-size: 20px;
-    }
-    .text-box h2{
-        font-size: 18px;
-        margin-top: -1px;
-    }
-}
-.header {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    background-color: #f1f1f1;
-  }
-
-.info{
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding-top: 100px;
-}
-.info h1{
-    font-size: 36px;
-    font-weight: 600;
-}
-.info p{
-    color: #777;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 22px;
-    padding: 10px;
-}
 /* The progress container (grey background) */
 .progress-container {
     width: 54.5%;
@@ -144,4 +107,12 @@ nav img{
     position: absolute;
     right: 50 px;
     transform: rotate(-90deg)
+}
+
+.course{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+    color:rgb(0, 0, 0);
 }
