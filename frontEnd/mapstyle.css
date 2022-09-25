@@ -12,14 +12,20 @@ body {
     width: 100 px;
   }
 
-
   /* Button used to open the contact form - fixed at the bottom of the page */
   .closing {
     background-color: #555;
     color: white;
     border: none;
     cursor: pointer;
+    box-sizing: border-box;
   }
+
+  .nav-links{
+    flex: 1;
+    text-align: right;
+    margin-top: 0px;
+}   
   
   /* The popup form - hidden by default */
   .form-popup {
