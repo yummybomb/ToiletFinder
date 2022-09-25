@@ -1,9 +1,11 @@
 require('dotenv').config();
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const port = 3000
 var axios = require('axios');
 app.use(express.json());
+app.use(cors());
 
 const Client = require("@googlemaps/google-maps-services-js");
 const client = new Client.Client({});
@@ -17,23 +19,26 @@ privateLocations = []; // Should hold object of {owner, name, latitude, longitud
 app.get('/publiclocations', (req,res) => {
     console.log(`getting public locations`);
     const { latitude, longitude } = req.query;
+    if (!latitude || !longitude) {
+        return res.status(400).send("no query provided");
+    }
     //console.log(latitude);
     var config = {
         method: 'get',
-        url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude}%2C${longitude}&radius=800&keyword=public%20bathrooms&type=&key=${process.env.API_KEY}`
+        url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude}%2C${longitude}&rankby=distance&keyword=public%20bathrooms&type=&key=${process.env.API_KEY}`
     };
     
     axios(config)
         .then(function (response) {
-            console.log(JSON.stringify(response.data.results));
+            console.log(`public locations: ${JSON.stringify(response.data.results)}`);
             response.data.results.forEach(element => {
                 console.log(`Name: ${element.name}, Location: Lat:${element.geometry.location.lat} Long:${element.geometry.location.lng}`);
             })
-            res.json(response.data.results);
+            res.status(200).json(response.data.results);
         })
         .catch(function (error) {
             console.log(error);
-            res.json();
+            res.status(400).json("wrong");
         });
 })
 

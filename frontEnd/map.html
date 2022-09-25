@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script type="text/javascript" src="/map.js"></script>
+    <!--<script type="text/javascript" src="map.js"></script>-->
     <meta name = "viewport" content = "with=device-width, initial-scale=1.0">
     <title>Sh*tHub</title>
     <link rel="stylesheet" href="style1.css">
@@ -9,8 +9,112 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="mapstyle.css">
+    <script>
+        function initialize() {
+            //navigator.geolocation.getCurrentPosition(myMap, error, options);
+        }
+
+        async function myMap(pos) {
+            //let crd = pos.coords;
+            let crd = {};
+            //publicLocations = getPublicLocations(crd.latitude, crd.longitude);
+            crd.latitude = 40.71;
+            crd.longitude = -74;
+            var mapProp= {
+                center:new google.maps.LatLng(crd.latitude,crd.longitude),
+                zoom:15
+            }
+            map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+            getPublicLocations(crd.latitude, crd.longitude);
+            /*if (pos) {
+                await getPublicLocations(crd.latitude, crd.longitude).then(publicLocations => {
+                    console.log(`get public locations: ${publicLocations}`);
+                    publicLocations.forEach(element => {
+                        const lat = element.geometry.location.lat;
+                        const lng = element.geometry.location.lng;
+                        const latLng = new google.maps.LatLng(lat, lng);
+                        new google.maps.Marker({
+                                position: latLng,
+                                map: map
+                        });
+                    });
+                });                
+            } */
+        }
+        /*
+        function centerMap(pos) {
+            const crd = pos.coords;
+
+            //map.center = new google.maps.LatLng(crd.latitude,crd.longitude);
+            //map.zoom = 15;
+
+            publicLocations = getPublicLocations(crd.latitude, crd.longitude);
+            console.log(publicLocations);
+            publicLocations.forEach(element => {
+                const lat = element.geometry.location.lat;
+                const lng = element.geometry.location.lng;
+                const latLng = new google.maps.LatLng(lat, lng);
+                new google.maps.Marker({
+                        position: latLng,
+                        map: map,
+                });
+            })
+        }*/
+
+        // Returns array of data
+        async function getPublicLocations(latitude, longitude) {
+            
+            axios.get("http://localhost:3000/publiclocations", {params: {
+                latitude: latitude,
+                longitude: longitude
+            }})
+                .then(response => {
+                    data = response.data;
+                    console.log(`GET public locations`, data);
+                    var mapProp= {
+                        center:new google.maps.LatLng(latitude, longitude),
+                        zoom:15
+                    }
+                    map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                    //console.log(`get public locations: ${publicLocations}`);
+                    data.forEach(element => {
+                        const lat = element.geometry.location.lat;
+                        const lng = element.geometry.location.lng;
+                        const latLng = new google.maps.LatLng(lat, lng);
+                        new google.maps.Marker({
+                                position: latLng,
+                                map: map
+                        });
+                    });
+                    //return data;
+                })
+                .catch(error => console.error(error));
+            
+        }
+        function success(pos) {
+          const crd = pos.coords;
+        
+          console.log('Your current position is:');
+          console.log(`Latitude : ${crd.latitude}`);
+          console.log(`Longitude: ${crd.longitude}`);
+          console.log(`More or less ${crd.accuracy} meters.`);
+        }
+        
+        function error(err) {
+          console.warn(`ERROR(${err.code}): ${err.message}`);
+        }
+                
+        const options = {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0
+        };
+        navigator.geolocation.getCurrentPosition(myMap, error, options);
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnYzV5ysatKkYUEzgiIH5hhqZDuCg8yE0&callback=myMap"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
-<body>
+<body onload="initialize();">
     <section class = "header">
         <nav>
             <a href="index.html">
@@ -34,41 +138,5 @@
         
 </div>
     </section>
-
-<script>
-function myMap(pos) {
-const crd = pos.coords;
-var mapProp= {
-  center:new google.maps.LatLng(crd.latitude,crd.longitude),
-  zoom:15,
-};
-var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-}
-
-const options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 0
-};
-
-function success(pos) {
-  const crd = pos.coords;
-
-  console.log('Your current position is:');
-  console.log(`Latitude : ${crd.latitude}`);
-  console.log(`Longitude: ${crd.longitude}`);
-  console.log(`More or less ${crd.accuracy} meters.`);
-}
-
-function error(err) {
-  console.warn(`ERROR(${err.code}): ${err.message}`);
-}
-
-navigator.geolocation.getCurrentPosition(myMap, error, options);
-
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnYzV5ysatKkYUEzgiIH5hhqZDuCg8yE0&callback=myMap"></script>
-
 </body>
 </html>
