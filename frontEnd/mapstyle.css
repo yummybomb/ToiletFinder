@@ -38,7 +38,7 @@ body {
     border: 3px solid #f1f1f1;
     z-index: 9;
   }
-  
+  {box-sizing: border-box;}
   /* Add styles to the form container */
   .form-container {
     max-width: 300px;
@@ -49,9 +49,9 @@ body {
   /* Full-width input fields */
   .form-container input[type=text], .form-container input[type=text] {
     border-radius: 12px;
-    width: 100%;
+    width: 90%;
     padding: 15px;
-    margin: 5px 0 10px 0;
+    margin: 0px 0 10px 0;
     border: none;
     background: #f1f1f1;
   }
