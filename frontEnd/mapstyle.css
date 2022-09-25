@@ -11,7 +11,7 @@ body {
     height: 100%;
     width: 100 px;
   }
-  {box-sizing: border-box;}
+
 
   /* Button used to open the contact form - fixed at the bottom of the page */
   .closing {
