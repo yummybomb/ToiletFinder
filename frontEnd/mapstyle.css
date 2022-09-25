@@ -11,3 +11,9 @@ body {
     height: 100%;
     width: 100 px;
   }
+
+.nav-links{
+    flex: 1;
+    text-align: right;
+    margin-top: 0px;
+}   
