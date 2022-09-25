@@ -99,6 +99,9 @@ nav{
     background: #8a653f;
 }
 
+/* SECTION 2 */
+
+
 .course{
     width: 100%;
     margin: auto;
@@ -123,6 +126,10 @@ h2{
     font-weight: 600;
     padding: 20px;
 }
+
+/* SECTION 3 */
+
+
 .features{
     width: 100%;
     margin: auto;
@@ -131,16 +138,30 @@ h2{
     color:rgb(0, 0, 0);
     background: #fff
 }
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+.features-col{
+    flex-basis: 31%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.features-col img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.features-col h3{
+    margin-top: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
 h1{
     font-size: 40px;
     font-weight: 600;
 }
-p{
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 22px;
-    padding: 10px;
-}
-
-  
