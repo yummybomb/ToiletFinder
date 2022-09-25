@@ -1,5 +1,13 @@
 body {
     display: block;
-    margin: 8px;
+    margin: 0px;
     overflow: hidden; /* Hide scrollbars */
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100 px;
+  }
