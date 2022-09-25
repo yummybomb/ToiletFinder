@@ -7,6 +7,8 @@ var axios = require('axios');
 app.use(express.json());
 app.use(cors({ origin: '*' }));
 
+API_KEY = "AIzaSyBnYzV5ysatKkYUEzgiIH5hhqZDuCg8yE0";
+
 const Client = require("@googlemaps/google-maps-services-js");
 const client = new Client.Client({});
 
@@ -25,7 +27,7 @@ app.get('/publiclocations', (req,res) => {
     //console.log(latitude);
     var config = {
         method: 'get',
-        url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude}%2C${longitude}&rankby=distance&keyword=public%20bathrooms&type=&key=${process.env.API_KEY}`
+        url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude}%2C${longitude}&rankby=distance&keyword=public%20bathrooms&type=&key=${API_KEY}`
     };
     
     axios(config)
