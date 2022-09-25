@@ -25,11 +25,10 @@ body {
   .form-popup {
     display: none;
     position: fixed;
-    display: block;
     top: 50%;
     left: 50%;
     margin-left: -150px;
-    margin-top: 0px;
+    margin-top: 30px;
     border: 3px solid #f1f1f1;
     z-index: 9;
   }
@@ -42,16 +41,17 @@ body {
   }
   
   /* Full-width input fields */
-  .form-container input[type=text], .form-container input[type=password] {
+  .form-container input[type=text], .form-container input[type=text] {
+    border-radius: 12px;
     width: 100%;
     padding: 15px;
-    margin: 5px 0 22px 0;
+    margin: 5px 0 10px 0;
     border: none;
     background: #f1f1f1;
   }
   
   /* When the inputs get focus, do something */
-  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  .form-container input[type=text]:focus, .form-container input[type=text]:focus {
     background-color: #ddd;
     outline: none;
   }
@@ -60,17 +60,19 @@ body {
   .form-container .btn {
     background-color: #04AA6D;
     color: white;
-    padding: 16px 20px;
+    padding: 10px 15px;
     border: none;
     cursor: pointer;
     width: 100%;
     margin-bottom:10px;
-    opacity: 0.8;
+    opacity: 0.65;
+    border-radius: 12px;
   }
   
   /* Add a red background color to the cancel button */
   .form-container .cancel {
     background-color: red;
+    border-radius: 12px;
   }
   
   /* Add some hover effects to buttons */
