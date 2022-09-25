@@ -5,7 +5,7 @@ const app = express()
 const port = 3000
 var axios = require('axios');
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: '*' }));
 
 const Client = require("@googlemaps/google-maps-services-js");
 const client = new Client.Client({});
