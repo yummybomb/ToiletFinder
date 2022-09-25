@@ -77,13 +77,19 @@
                     }
                     map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
                     //console.log(`get public locations: ${publicLocations}`);
+                    const icons = {
+                      toilet: {
+                        icon:  "./image/Toilet.png"
+                      }
+                    }
                     data.forEach(element => {
                         const lat = element.geometry.location.lat;
                         const lng = element.geometry.location.lng;
                         const latLng = new google.maps.LatLng(lat, lng);
                         new google.maps.Marker({
                                 position: latLng,
-                                map: map
+                                map: map,
+                                icon: icons.toilet.icon,
                         });
                     });
                     //return data;
