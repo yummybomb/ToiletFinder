@@ -11,7 +11,7 @@
 .header{
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(223, 225, 234, 0.758),rgba(34, 35, 37, 0.763)),url(image/bg.jpg);
+    background-image: url(image/bg.jpg);
     background-position: center;
     position: relative;
 }
@@ -35,21 +35,6 @@ nav img{
     .text-box h1{
         font-size: 20px;
     }
-.hero-btn{
-    display: inline-block;
-    text-decoration: none;
-    color: #1d2026;
-    border: 1px solid #1d2026;
-    padding: 5px 20px;
-    width: 75px;
-    font-size: 13px;
-    font-weight: 200;
-    background: transparent;
-    position: relative;
-    cursor: pointer;
-    margin-top: 2rem;
-    transition: 1s;
-}
 }
 .nav-links{
     flex: 1;
@@ -89,7 +74,8 @@ nav img{
     text-align: center;
 }
 .text-box h1{
-    font-size: 80px;
+    font-size: 25px;
+    margin-top: 15px;
 }
 .text-box h2{
     font-size: 55px;
@@ -106,11 +92,11 @@ nav img{
     text-decoration: none;
     color: #1d2026;
     border: 1px solid #1d2026;
-    padding: 10px 100px;
+    padding: 10px 40px;
     width: 300px;
     font-size: 13px;
     font-weight: 300;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.546);
     position: relative;
     cursor: pointer;
     margin-top: 2rem;
