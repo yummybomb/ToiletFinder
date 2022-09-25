@@ -11,7 +11,6 @@ body {
     height: 100%;
     width: 100 px;
   }
-  {box-sizing: border-box;}
 
   /* Button used to open the contact form - fixed at the bottom of the page */
   .closing {
@@ -19,7 +18,14 @@ body {
     color: white;
     border: none;
     cursor: pointer;
+    box-sizing: border-box;
   }
+
+  .nav-links{
+    flex: 1;
+    text-align: right;
+    margin-top: 0px;
+}   
   
   /* The popup form - hidden by default */
   .form-popup {
@@ -32,7 +38,7 @@ body {
     border: 3px solid #f1f1f1;
     z-index: 9;
   }
-  
+  {box-sizing: border-box;}
   /* Add styles to the form container */
   .form-container {
     max-width: 300px;
@@ -43,9 +49,9 @@ body {
   /* Full-width input fields */
   .form-container input[type=text], .form-container input[type=text] {
     border-radius: 12px;
-    width: 100%;
+    width: 90%;
     padding: 15px;
-    margin: 5px 0 10px 0;
+    margin: 0px 0 10px 0;
     border: none;
     background: #f1f1f1;
   }
