@@ -12,7 +12,50 @@ API_KEY = "AIzaSyBnYzV5ysatKkYUEzgiIH5hhqZDuCg8yE0";
 const Client = require("@googlemaps/google-maps-services-js");
 const client = new Client.Client({});
 
-privateLocations = []; // Should hold object of {owner, name, latitude, longitude}
+privateLocations = [
+    {
+      owner: 'test',
+      name: 'SAC',
+      latitude: 40.9143233482615,
+      longitude: -73.1244421005249
+    },
+    {
+      owner: 'test',
+      name: 'Union',
+      latitude: 40.91714475777896,
+      longitude: -73.12255382537842
+    },
+    {
+      owner: 'test',
+      name: 'Roth Cafe',
+      latitude: 40.91044165249971,
+      longitude: -73.12340449206543
+    },
+    {
+      owner: 'test',
+      name: 'LIRR',
+      latitude: 40.921619850023355,
+      longitude: -73.12804698944092
+    },
+    {
+      owner: 'test',
+      name: 'GLS',
+      latitude: 40.912085593022255,
+      longitude: -73.13302516937256
+    },
+    {
+      owner: 'test',
+      name: 'Wang Center',
+      latitude: 40.91591243280104,
+      longitude: -73.11980724334717
+    },
+    {
+      owner: 'test',
+      name: 'Hospital',
+      latitude: 40.90949099937811,
+      longitude: -73.11542987823486
+    }
+  ]; // Should hold object of {owner, name, latitude, longitude}
 
 // ROUTES------------------------- 
 
