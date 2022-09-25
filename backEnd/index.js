@@ -12,7 +12,7 @@ API_KEY = "AIzaSyBnYzV5ysatKkYUEzgiIH5hhqZDuCg8yE0";
 const Client = require("@googlemaps/google-maps-services-js");
 const client = new Client.Client({});
 
-privateLocations = []; // Should hold object of {owner, name, latitude, longitude, vicinity}
+privateLocations = []; // Should hold object of {owner, name, latitude, longitude}
 
 // ROUTES------------------------- 
 
@@ -46,7 +46,8 @@ app.get('/publiclocations', (req,res) => {
 
 // Return locations of all private submitted bathrooms
 app.get('/privatelocations', (req,res) => { 
-    console.log("getting private locations")
+    console.log("getting private locations:")
+    console.log(privateLocations);
     res.status(200).json(privateLocations);
 })
 
@@ -64,9 +65,10 @@ app.get('/locations/:user', (req,res) => {
 
 // Adds location to list
 app.post('/locations', (req,res) => {
-    const {owner, name, latitude, longitude, vicinity} = req.body;
-    if (owner && name && latitude && longitude && vicinity) {
-        privateLocations.push({owner, name, latitude, longitude, vicinity});
+    const {owner, name, latitude, longitude} = req.body;
+    console.log(req.body);
+    if (owner && name && latitude && longitude) {
+        privateLocations.push({owner, name, latitude, longitude});
         res.status(200).json("success");
     } else {
         res.status(400).json("failed");

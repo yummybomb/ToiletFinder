@@ -15,17 +15,18 @@
         }
 
         async function myMap(pos) {
-            //let crd = pos.coords;
-            let crd = {};
+            let crd = pos.coords;
+            //let crd = {};
             //publicLocations = getPublicLocations(crd.latitude, crd.longitude);
-            crd.latitude = 40.71;
-            crd.longitude = -74;
+            //crd.latitude = 40.71;
+            //crd.longitude = -74;
             var mapProp= {
                 center:new google.maps.LatLng(crd.latitude,crd.longitude),
                 zoom:15
             }
             map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-            getPublicLocations(crd.latitude, crd.longitude);
+            //getPublicLocations(crd.latitude, crd.longitude);
+            getPrivateLocations(crd.latitude, crd.longitude);
         }
         /*
         function centerMap(pos) {
@@ -97,6 +98,50 @@
             
         }
 
+        async function getPrivateLocations(latitude,longitude) {
+            axios.get("http://localhost:3000/privatelocations")
+                .then(response => {
+                    data = response.data;
+                    console.log(`GET private locations`, data);
+                    var mapProp= {
+                        center:new google.maps.LatLng(latitude, longitude),
+                        zoom:15
+                    }
+                    map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                    //console.log(`get public locations: ${publicLocations}`);
+                    const icons = {
+                      toilet: {
+                        icon:  "./image/Toilet.png"
+                      }
+                    }
+                    data.forEach(element => {
+                        const lat = element.latitude;
+                        const lng = element.longitude;
+                        const latLng = new google.maps.LatLng(lat, lng);
+                        //console.log(element.name);
+                        const contentString = element.name;
+                        const infowindow = new google.maps.InfoWindow({
+                            content: contentString,
+                        });
+                        const marker = new google.maps.Marker({
+                                position: latLng,
+                                title: "Click for more info",
+                                map: map,
+                                icon: icons.toilet.icon,
+                        });
+                        marker.addListener("click", () => {
+                            infowindow.open({
+                                anchor: marker,
+                                map,
+                                shouldFocus: false,
+                            });
+                        });
+                    });
+                    //return data;
+                })
+                .catch(error => console.error(error));
+        }
+
         function startAdd() {
             navigator.geolocation.getCurrentPosition(pos => {
                 //console.log(pos);
@@ -114,6 +159,8 @@
                     infoWindow.close();
                     let latLng = mapsMouseEvent.latLng.toJSON();
                     console.log(latLng);
+                    window.latLng = latLng;
+                    console.log(window.latLng);
                     
                     // Create a new InfoWindow.
                     infoWindow = new google.maps.InfoWindow({
@@ -125,10 +172,25 @@
                     infoWindow.open(map);
 
                     // Open popup dialog asking for name and confirm
-                    
+                    openForm();
 
                 });
             }, error, options); 
+        }
+        async function addToilet(latlng) {
+            let name = document.getElementById("toiletnameinput").value;
+            console.log(name);
+            axios.post("http://localhost:3000/locations", {
+                owner: "test",
+                name: name,
+                latitude: window.latLng.lat,
+                longitude: window.latLng.lng
+            })
+            .then(response => {
+                console.log("successfully added toilet");
+                closeForm();
+                location.reload()
+            }).catch(error => console.error(error));
         }
         function success(pos) {
           const crd = pos.coords;
@@ -169,9 +231,30 @@
         <div id="googleMap" style="width:100%;height: 80vh;"></div>
         <div class="container">
           <div class="button-wrapper">
-            <button id="add" class="closing" onClick="startAdd();"><img src="image/plus button.png" style="width:48px;height:48px;"/></button>
+            <button id="close" class="closing" onClick="startAdd()"><img src="image/plus button.png" style="width:48px;height:48px;"/></button>
+            <div class="form-popup" id="myForm">
+                <form class="form-container">
+                  <h1>Add Toilet</h1>
+                  <label for="Toilets"><b>Toilet Name</b></label>
+                  <input id = "toiletnameinput" type="text" placeholder="Enter Toilet Name" name="toilet" required>
+                  <button type="button" class="btn" onclick="addToilet();">Submit</button>
+                  <button type="button" class="btn cancel" onclick="closeForm();">Cancel</button>
+                </form>
+            </div>
+            <script>
+                function openForm() {
+                    document.getElementById("myForm").style.display = "block";
+                }
+
+                function closeForm() {
+                    document.getElementById("myForm").style.display = "none";
+                }
+            </script>
             <a href = "map.html"><button id="close" class="closing" onClick="javascript:close_clip()"><img src="image/home button.png" style="width:48px;height:48px;" /></button></a>
-            <button id="users" class="closing" onClick="javascript:close_clip()"><img src="image/Users button.png" style="width:48px;height:48px;"/></button>
+            <button id="close" class="closing" onClick="javascript:close_clip()"><img src="image/Users button.png" style="width:48px;height:48px;"/></button>
+            <div class="form-popup" id="myForm">
+
+</div>
           </div>
         </div>  
         
